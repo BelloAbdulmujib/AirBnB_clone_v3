@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-creating a rout that returns a JSON obj
+creating a rout that returns a JSON
 """
 
 from api.v1.views import app_views
@@ -8,15 +8,13 @@ from flask import jsonify
 from models import storage
 
 
-@app_views.route("/status", method=['GET'])
+@app_views.route("/status", methods=['GET'])
 def status():
-    """ function of status """
     return jsonify({"status": "OK"})
 
 
-@app_views.route("/status", method=['GET'])
+@app_views.route("/status", methods=['GET'])
 def all_state():
-    """ all json object returned """
     class_object = {
         "amenities": storage.count("Amenities"),
         "cities": storage.count("Cities"),
