@@ -10,11 +10,13 @@ from models import storage
 
 @app_views.route("/status", methods=['GET'])
 def status():
+    """ function of status """
     return jsonify({"status": "OK"})
 
 
 @app_views.route("/status", methods=['GET'])
 def all_state():
+    """ all json obj's returned """
     class_object = {
         "amenities": storage.count("Amenities"),
         "cities": storage.count("Cities"),
