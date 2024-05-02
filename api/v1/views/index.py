@@ -2,9 +2,14 @@
 """
 creating a rout that returns a JSON
 """
-
-from api.v1.views import app_views
 from flask import jsonify
+from api.v1.views import app_views
+from models.amenity import Amenity
+from models.city impory City
+from models.place import Place
+from models.state import State
+from models.review import Review
+from models.user import User
 from models import storage
 
 
@@ -17,11 +22,11 @@ def my_app_status():
 def all_the_stats():
     """ all json obects in the file are returned """
     class_object = {
-        "amenities": storage.count("Amenities"),
-        "cities": storage.count("Cities"),
-        "places": storage.count("Places"),
+        "amenities": storage.count("Amenity"),
+        "cities": storage.count("City"),
+        "places": storage.count("Place"),
         "reviews": storage.count("Review"),
-        "states": storage.count("States"),
-        "users": storage.count("Users")
+        "states": storage.count("State"),
+        "users": storage.count("User")
     }
     return (jsonify(class_object))
