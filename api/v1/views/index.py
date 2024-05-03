@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-creating a rout that returns a JSON
+creating a rout that returns a JSON obj
 """
 
 from api.v1.views import app_views
