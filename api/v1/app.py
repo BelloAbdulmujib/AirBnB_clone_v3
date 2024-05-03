@@ -10,23 +10,11 @@ from api.v1.views import app_views
 from os import getenv
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
-
-app.register_blueprint(app_views)
-
+app.register_blueprint(app_views, url_prefix='/api/v1')
 
 @app.teardown_appcontext
-def teardown(Exception):
-    """ function on teardown """
+def teardown_appcontext(exception):
     storage.close()
-
-
-@app.errorhandler(404)
-def detect_issue(error):
-    """ detects the issue/error """
-    response = show_response(jsonify({'error': 'Not found'}), 404)
-    return response
-
 
 if __name__ == "__main__":
     host = getenv("HBNB_API_HOST", "0.0.0.0")
