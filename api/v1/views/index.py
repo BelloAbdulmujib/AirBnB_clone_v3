@@ -3,7 +3,6 @@
 creating a rout that returns a JSON
 """
 from flask import jsonify
-import models
 from api.v1.views import app_views
 from models.amenity import Amenity
 from models.city impory City
@@ -11,10 +10,11 @@ from models.place import Place
 from models.state import State
 from models.review import Review
 from models.user import User
-#from models import storage
+from models import storage
 
 
 @app_views.route('/status', strict_slashes=False)
+"""view point that return json output"""
 def app_status():
     return jsonify({"status": "OK"})
 
