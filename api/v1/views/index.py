@@ -14,9 +14,9 @@ def status():
     return jsonify({"status": "OK"})
 
 
-@app_views.route("/status", methods=['GET'])
+@app_views.route("/stats", methods=['GET'])
 def all_state():
-    """ shows the objects after retrieval """
+    """Display the objects after retrieval """
     class_object = {
         "amenities": storage.count("Amenities"),
         "cities": storage.count("Cities"),
