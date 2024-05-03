@@ -21,7 +21,7 @@ def app_status():
 
 @app_views.route("/stats", strict_slashes=False)
 def point_stats():
-    """ all json obects in the file are returned """
+    """all json obects in the file are returned """
     return jsonify({
         "amenities": storage.count("Amenity"),
         "cities": storage.count("City"),
