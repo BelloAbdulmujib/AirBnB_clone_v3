@@ -8,7 +8,7 @@ def dic_states():
     """Returns the dictionary of States in state.py"""
     dico = []
     for ind in storage.all(State).values():
-        dico.append(val.to_dict())
+        dico.append(ind.to_dict())
     return jsonify(dico)
 
 @app_views.route('/states/<path:state_id>')
@@ -19,7 +19,8 @@ def get_state(state_id):
         abort(404)
     return jsonify(state.to_dict())
 
-def delete_state('/states/<state_id>', methods=['DELETE'])
+@app_views.route('/states/<state_id>', methods=['DELETE'])
+def delete_state(state_id):
     """delete the state element"""
     state = storage.get(State, state_id)
     if state_id is None:
@@ -27,4 +28,4 @@ def delete_state('/states/<state_id>', methods=['DELETE'])
     state.delete()
     state.save()
     storage.save()
-    return jsonify({}), 200)
+    return jsonify({}, 200)
