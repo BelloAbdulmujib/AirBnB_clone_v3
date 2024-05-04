@@ -18,11 +18,11 @@ def status():
 def all_state():
     """Display the objects after retrieval """
     class_object = {
-        "amenities": storage.count("Amenities"),
-        "cities": storage.count("Cities"),
-        "places": storage.count("Places"),
+        "amenities": storage.count("Amenity"),
+        "cities": storage.count("City"),
+        "places": storage.count("Place"),
         "reviews": storage.count("Review"),
-        "states": storage.count("States"),
-        "users": storage.count("Users")
+        "states": storage.count("State"),
+        "users": storage.count("User")
     }
     return jsonify(class_object)
