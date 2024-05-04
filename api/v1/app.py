@@ -23,9 +23,8 @@ def teardown(Exception):
 
 @app.errorhandler(404)
 def detect_issue(error):
-    """ detects the issue """
-    response = show_response(jsonify({'error': 'Not found'}), 404)
-    return response
+    """ detects the issue"""
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
