@@ -49,3 +49,19 @@ def post_state():
     dic_state = State(**result)
     dic_state.save()
     return jsonify(dic_state.to_dict()), 201
+
+
+@app_views.route('/states/<path:state_id>', methods=['PUT'])
+def put_state(state_id):
+    """Put method in restapi that save the initial setup via http"""
+    state = storage.get(State, state_id)
+    if state is None:
+        abort(404)
+    res = request.get_json()
+    if type(res) != dict:
+        return abort(400, {'message': 'Not a JSON'})
+    for key, value in res.items():
+        if key not in ["id", "state_id", "created_at", "updated_at"]:
+            setattr(state, key, value)
+    storage.save()
+    return jsonify(state.to_dict()), 200
