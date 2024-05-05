@@ -50,7 +50,7 @@ def post_state():
         return abort(400, {'message': 'Missing name'})
     initial_state = State(**result)
     initial_state.save()
-    return jsonify(initial_state.to_dict()), 201
+    return jsonify(initial_state.to_dict(), 201)
 
 
 @app_views.route('/states/<path:state_id>', methods=['PUT'],
@@ -67,4 +67,4 @@ def put_state(state_id):
         if key not in ["id", "state_id", "created_at", "updated_at"]:
             setattr(key, state, value)
     storage.save()
-    return jsonify(state.to_dict()), 200
+    return jsonify(state.to_dict(), 200)
