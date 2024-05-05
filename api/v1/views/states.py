@@ -9,17 +9,17 @@ from api.v1.views import app_views
 
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
-def dic_states():
-    """Returns the dictionary of States in state.py"""
+def get_states():
+    """Gets all the elements of State from states.py"""
     dico = []
-    for ind in storage.all(State).values():
-        dico.append(ind.to_dict())
+    for index in storage.all(State).values():
+        dico.append(index.to_dict())
     return jsonify(dico)
 
 
 @app_views.route('/states/<path:state_id>')
 def get_state(state_id):
-    """Gets all the elements of State from states.py"""
+    """Gets the state with id number"""
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
