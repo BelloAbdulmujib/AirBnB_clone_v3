@@ -28,4 +28,4 @@ def delete_state(state_id):
     state.delete()
     state.save()
     storage.save()
-    return jsonify({}, 200)
+    return jsonify({})
