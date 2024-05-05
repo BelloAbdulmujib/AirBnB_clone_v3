@@ -51,7 +51,8 @@ def post_state():
     return jsonify(dic_state.to_dict()), 201
 
 
-@app_views.route('/states/<path:state_id>', methods=['PUT'])
+@app_views.route('/states/<path:state_id>', methods=['PUT'],
+                 strict_slashes=False)
 def put_state(state_id):
     """Put method in restapi that save the initial setup via http"""
     state = storage.get(State, state_id)
