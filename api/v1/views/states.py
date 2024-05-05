@@ -26,7 +26,8 @@ def get_state(state_id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'])
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+        strict_slashes=False)
 def delete_state(state_id):
     """delete the state element"""
     state = storage.get(State, state_id)
@@ -38,7 +39,8 @@ def delete_state(state_id):
     return jsonify({})
 
 
-@app_views.route('/states', methods=['POST'], strict_slashes=False)
+@app_views.route('/states', methods=['POST'],
+        strict_slashes=False)
 def post_state():
     result = request.get_json()
     if type(result) != dict:
