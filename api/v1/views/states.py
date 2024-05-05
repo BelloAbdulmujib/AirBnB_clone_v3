@@ -42,6 +42,7 @@ def delete_state(state_id):
 @app_views.route('/states', methods=['POST'],
                  strict_slashes=False)
 def post_state():
+    """post a request via http and updating the object"""
     result = request.get_json()
     if type(result) != dict:
         return abort(400, {'message': 'Not a JSON'})
