@@ -2,7 +2,7 @@
 """Create a new view for State objects that handles all default
 RESTFul API actions"""
 
-from flask import Flask, jsonify, abort, request
+from flask import jsonify, abort, request
 from models import storage
 from models.state import State
 from api.v1.views import app_views
