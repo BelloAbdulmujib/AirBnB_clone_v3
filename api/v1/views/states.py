@@ -61,7 +61,7 @@ def put_state(state_id):
     if type(res) != dict:
         return abort(400, {'message': 'Not a JSON'})
     for key, value in res.items():
-        if key not in ["id", "state_id", "created_at", "updated_at"]:
+        if key not in ["id", "created_at", "updated_at"]:
             setattr(state, key, value)
     storage.save()
     return jsonify(state.to_dict()), 200
