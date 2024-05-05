@@ -37,11 +37,3 @@ def delete_state(state_id):
     state.save()
     storage.save()
     return jsonify({})
-
-
-@app_views.route('/states', methods=['POST'],
-        strict_slashes=False)
-def post_state():
-    """Make a post request that retrieves data"""
-    result = request.get_json()
-    if type(result) !=
