@@ -1,9 +1,13 @@
+#!/usr/bin/python3
+"""Create a new view for State objects that handles all default
+RESTFul API actions"""
+
 from flask import Flask, jsonify, abort, request
 from models import storage
 from models.state import State
 from api.v1.views import app_views
 
-@app_views.route('/states', methods=['GET'])
+@app_views.route('/states', methods=['GET'], strict_slashes=False)
 def dic_states():
     """Returns the dictionary of States in state.py"""
     dico = []
@@ -29,3 +33,7 @@ def delete_state(state_id):
     state.save()
     storage.save()
     return jsonify({})
+
+@app_views.route('/states', methods=['POST'], strict_slashes=False)
+def get_post():
+    result = request.get_json()
