@@ -26,7 +26,7 @@ def get_state(state_id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'],
+@app_views.route('/states/<path:state_id>', methods=['DELETE'],
         strict_slashes=False)
 def delete_state(state_id):
     """delete the state element"""
@@ -42,6 +42,7 @@ def delete_state(state_id):
 @app_views.route('/states', methods=['POST'],
         strict_slashes=False)
 def post_state():
+    """Make a post request that retrieves data"""
     result = request.get_json()
     if type(result) != dict:
         return abort(400, {'message': 'Not a JSON'})
@@ -52,9 +53,10 @@ def post_state():
     return jsonify(initial_state.to_dict()), 201
 
 
-@app_views.route('/states/<state_id>', methods=['PUT'],
+@app_views.route('/states/<path:state_id>', methods=['PUT'],
         strict_slashes=False)
 def put_state(state_id):
+    """Put method that recreate the post method"""
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
