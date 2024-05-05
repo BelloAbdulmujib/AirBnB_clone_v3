@@ -29,6 +29,7 @@ def get_state(state_id):
 @app_views.route('/states/<path:state_id>', methods=['DELETE'])
 def delete_state(state_id):
     """delete the state element"""
+    state = storage.get(State, state_id)
     if state_id is None:
         abort(404)
     state.delete()
@@ -46,6 +47,6 @@ def post_state():
         return abort(400, {'message': 'Not a JSON'})
     if 'name' not in result:
         return abort(400, {'message': 'Missing name'})
-    dic_state = State(**res)
+    dic_state = State(**result)
     dic_state.save()
     return jsonify(dic_state.to_dict()), 201
