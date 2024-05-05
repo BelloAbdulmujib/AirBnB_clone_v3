@@ -37,7 +37,7 @@ def delete_state(state_id):
     return jsonify({})
 
 
-@app_views.route('/states', methods=['POST'])
+@app_views.route('/states', methods=['POST'], strict_slashes=False)
 def post_state():
     """post a request via http and updating the object"""
     result = request.get_json()
