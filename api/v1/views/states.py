@@ -44,27 +44,4 @@ def delete_state(state_id):
 def post_state():
     """Make a post request that retrieves data"""
     result = request.get_json()
-    if type(result) != dict:
-        return abort(400, {'message': 'Not a JSON'})
-    if 'name' not in result:
-        return abort(400, {'message': 'Missing name'})
-    initial_state = State(**result)
-    initial_state.save()
-    return jsonify(initial_state.to_dict(), 201)
-
-
-@app_views.route('/states/<path:state_id>', methods=['PUT'],
-        strict_slashes=False)
-def put_state(state_id):
-    """Put method that recreate the post method"""
-    state = storage.get(State, state_id)
-    if state is None:
-        abort(404)
-    result = request.get_json()
-    if type result != dict:
-        return abort(400, {"message": "Not a JSON"})
-    for key.value in result.items():
-        if key not in ["id", "state_id", "created_at", "updated_at"]:
-            setattr(key, state, value)
-    storage.save()
-    return jsonify(state.to_dict(), 200)
+    if type(result) !=
