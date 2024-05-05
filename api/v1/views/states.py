@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Create a new view for State objects that handles all default
 RESTFul API actions"""
-
 from flask import jsonify, abort, request
 from models import storage
 from models.state import State
@@ -37,7 +36,7 @@ def delete_state(state_id):
         abort(404)
     state.delete()
     storage.save()
-    return jsonify({})
+    return jsonify({}), 200
 
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
